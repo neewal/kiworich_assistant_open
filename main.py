@@ -18,6 +18,8 @@ import requests
 import json
 from bs4 import BeautifulSoup
 
+good = ['повторите', 'не понял', 'не понимаю', 'что-то не понял, повторите', 'я не понимаю, я не понимаю. Я просто расстворяюсь']
+
 #Weather
 city = 'Ваш город или район'
 link = f"https://www.google.com/search?q=погода+в+{city}"
@@ -73,7 +75,7 @@ def command():
         text = rec.recognize_google(audio, language="ru-RU").lower()
         print('Вы:  ' + text[0].upper() + text[1:])
     except speech_recognition.UnknownValueError:
-        text = 'Не понимаю. Повторите.'
+        text = {random.choice(good)}
         print('Bot: ' + text)
         text = command()
     return text
@@ -111,7 +113,7 @@ def makeSomething(text):
     elif 'открой telegram' in text:
         try:
             print('Bot: открываю телеграм')
-            os.startfile('C:/Users/arcen/AppData/Roaming/Telegram Desktop/Telegram.exe')
+            os.startfile('C:/Users/name_user/AppData/Roaming/Telegram Desktop/Telegram.exe')
             logging.info(f'Открытие телеграм прошло успешно:)')
         except:
             logging.error('Произошла ошибка с открытием телеграм', exc_info=True)
@@ -132,7 +134,7 @@ def makeSomething(text):
     elif 'открой discord' in text: 
         try:
             print('Bot: открываю discord')
-            os.startfile('C:/Users/arcen/AppData/Local/Discord/app-1.0.9016/Discord.exe')
+            os.startfile('C:/Users/name_user/AppData/Local/Discord/app-1.0.9016/Discord.exe')
             logging.info(f'Открытие discord прошло успешно:)')
         except:
             logging.error('Произошла ошибка с открытием discord', exc_info=True)
@@ -146,7 +148,7 @@ def makeSomething(text):
 влажность: {humidity}
 ветер: {wind}
 """)
-            logging.info('Отправка погоды в телеграмм произошла успешно')
+            logging.info('Отправка погоды произошла успешно')
         except:
             logging.error('Произошла ошибка с показанием погоды, возможные проблемы: проблема с ботом, проблема с сервером, который предоставляет информацию о погоде, также возможно, что ваш интернет не работает.', exc_info=True)
 
