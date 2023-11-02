@@ -61,9 +61,9 @@ logging.basicConfig(level=logging.INFO, force=False, filename="py_log.log",
                     format="%(asctime)s %(levelname)s %(message)s")
 
 if str(responce) == str(f):
-    logging.info('Подключение к серверам google прошло успешно ' + '(' + str(responce) + ')')
+    logging.info('Подключение произошло успешно ' + '(' + str(responce) + ')')
 else:
-    logging.error('Поключение к серверам google прошло неудачно, не удалось подключится!' + '(' + str(responce) + ')', exc_info=True)
+    logging.error('Поключение прошло неуспешно, не удалось подключится!' + '(' + str(responce) + ')', exc_info=True)
 
 #Настройка микрофона    
 def command():
